@@ -253,7 +253,7 @@ class Player(MtGObject):
     def skip_next_turn(self, msg):
         def condition(keeper):
             if keeper.players.peek() == self:
-                keeper.players.next()
+                keeper.playersevent = next(events)
                 return True
             else: return False
         def skipTurn(keeper):

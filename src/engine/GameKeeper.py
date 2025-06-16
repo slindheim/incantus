@@ -43,7 +43,7 @@ class player_order(object):
         if self._peek:
             next_player, self._peek = self._peek, None
         else:
-            if not self._insertions: next_player = self._cycler.next()
+            if not self._insertions: next_player = self._cyclerevent = next(events)
             else: next_player = self._insertions.pop()
         # Now rearrange the list of players
         players = list(self._current)
@@ -54,7 +54,7 @@ class player_order(object):
     def insert(self, player):
         self._insertions.append(player)
     def peek(self):
-        self._peek = self.next()
+        self._peek = selfevent = next(events)
         return self._peek
 
 class GameKeeper(MtGObject):
@@ -259,7 +259,7 @@ class GameKeeper(MtGObject):
 
     def newTurn(self):
         # Next player is current player
-        active = self.players.next()
+        active = self.playersevent = next(events)
         self.send(NewTurnEvent(), player=active)
         active.newTurn()
     def untapStep(self):
@@ -438,7 +438,7 @@ class GameKeeper(MtGObject):
         player_cycler = self.players.cycle()
 
         # Keep track of active player first
-        last_to_play = player_cycler.next()
+        last_to_play = player_cyclerevent = next(events)
         if do_active: self.continuePlay(last_to_play)
 
         for player in player_cycler:

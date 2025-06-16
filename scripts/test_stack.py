@@ -139,7 +139,7 @@ class player_order(object):
         if self._peek:
             next_player, self._peek = self._peek, None
         else:
-            if not self._insertions: next_player = self._cycler.next()
+            if not self._insertions: next_player = self._cyclerevent = next(events)
             else: next_player = self._insertions.pop()
         # Now rearrange the list of players
         players = list(self._current)
@@ -149,7 +149,7 @@ class player_order(object):
     def insert(self, player):
         self._insertions.append(player)
     def peek(self):
-        self._peek = self.next()
+        self._peek = selfevent = next(events)
         return self._peek
 
 class Keeper:
@@ -223,7 +223,7 @@ class Keeper:
         #printer("*** %s has priority ***" % player)
     def newTurn(self):
         # Cycle through players
-        self.players.next()
+        self.playersevent = next(events)
     def playNonInstants(self):
         # Loop for playing spells when non-instants can be played
         active = self.players.active
@@ -251,7 +251,7 @@ class Keeper:
         # skip_first is when the active player has already passed
         players = self.players.cycle()
         # Keep track of active player first
-        last_to_play = players.next()
+        last_to_play = playersevent = next(events)
         if do_active: self.continuePlay(last_to_play)
 
         for player in players:

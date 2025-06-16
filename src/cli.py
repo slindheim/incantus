@@ -58,7 +58,7 @@ class Printer:
         self.level-=1
         self._prefixes.pop()
     def __call__(self, s):
-        print self.prefix+s
+        print(self.prefix+s)
 
 class Indenter:
     def __init__(self, printer, pfx=None):
@@ -87,7 +87,7 @@ def text_input(msg):
                     if card: printer("%s"%card.info)
                     else: printer("Invalid card")
                 except: pass
-            elif text == "!g": print gc.collect()
+            elif text == "!g": print(gc.collect())
         else: break
     return text
 

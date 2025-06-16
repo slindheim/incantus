@@ -37,7 +37,7 @@ class CostAbility(StackAbility):
     def targets_from_effects(self):
         return self.effects.send(self.cost)
     def get_cost(self):
-        cost = self.effects.next()
+        cost = self.effectsevent = next(events)
         self.cost = cost
 
 class ActivatedAbility(CostAbility):

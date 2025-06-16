@@ -29,7 +29,7 @@ class CastSpell(CostAbility):
             return False
     def get_cost(self):
         # ignore the cost returned by effects generator
-        self.effects.next()
+        self.effectsevent = next(events)
         self.cost = self.source.get_casting_cost()
     def played(self):
         # Don't change this order, otherwise abilities triggering on playing the spell

@@ -51,8 +51,8 @@ def copy_data_dirs():
     shutil.copytree("decks", os.path.join(dist_dir, "decks"))
     #shutil.copy("incantus.ini", os.path.join(dist_dir, "incantus.ini"))
 
-print "-" * 40
-print "copying files"
-print "-" * 40
+print("-") * 40
+print("copying files")
+print("-") * 40
 copy_data_dirs()
 

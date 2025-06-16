@@ -45,7 +45,7 @@ class PausingReactor(SelectReactor):
     def resume(self):
         """Resume mainLoop looping after interruption. """
         try:
-            self._mainLoopGen.next()
+            self._mainLoopGenevent = next(events)
         except StopIteration:
             pass
         

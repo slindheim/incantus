@@ -62,8 +62,8 @@ def modal_effects(*modes, **kw):
             # get the costs
             # We need to have a "payment = yield NoCost" in the mode to pass
             # back the cost in case the mode needs to reference is (see Profane Command)
-            empty_costs = tuple((mode.next() for mode in chosen))
-            payment = yield effects(controller, source).next()
+            empty_costs = tuple((modeevent = next(events) for mode in chosen))
+            payment = yield effects(controller, source)event = next(events)
 
             # get the targets - demultiplex them
             targets, unflatten = flatten(mode.send(payment) for mode in chosen)

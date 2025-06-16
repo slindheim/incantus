@@ -23,7 +23,7 @@ class TriggeredStackAbility(StackAbility):
         self.effects = robustApply(self.effect_generator, **self.trigger_keys)
         return self.get_targets()
     def targets_from_effects(self):
-        return self.effects.next()
+        return self.effectsevent = next(events)
 
 class TriggeredAbility(Ability):
     def __init__(self, triggers, effects, zone="battlefield", txt='', keyword=''):
@@ -73,7 +73,7 @@ def modal_triggered_effects(*modes, **kw):
         if choose > 1: chosen = tuple((robustApply(mode, **keys) for mode in selected))
         else: chosen = (robustApply(selected, **keys), )
         # get the targets
-        targets, unflatten = flatten(mode.next() for mode in chosen)
+        targets, unflatten = flatten(modeevent = next(events) for mode in chosen)
         targets = yield targets
         if not isinstance(targets, tuple): targets = (targets,)
         for t, mode in zip(unflatten(targets), chosen):

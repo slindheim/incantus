@@ -45,7 +45,7 @@ def prowl(prowl_cost):
         orig_spell = card.play_spell
         def play_prowl(controller, source):
             play = orig_spell.effect_generator(controller, source)
-            cost = play.next()
+            cost = playevent = next(events)
             prowl_payed = False
             if prowl_tracker.check(source) and controller.you_may("play this spell for it's prowl cost (%s)"%prowl_cost):
                 cost = prowl_cost
